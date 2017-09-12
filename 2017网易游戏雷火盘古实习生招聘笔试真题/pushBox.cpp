@@ -32,6 +32,7 @@
 */
 #include <iostream>
 #include <vector>
+#include <string.h>
 #include <queue>
 using namespace std;
 

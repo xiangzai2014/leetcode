@@ -2,6 +2,14 @@
 一些排序算法的比较
 from: https://mp.weixin.qq.com/s?__biz=MjM5NTI5NTAzNg==&mid=2656329463&idx=1&sn=ebc0d8a45e29e99d8b3024a52f72a717&chksm=bd5a44a48a2dcdb275c3774b16967d1631d08c83c0d6b37b35c5725721211ad3dca7bb6b6d60&scene=0&key=31a3a388ed6fa873afb784af993a1e5f10498ab8379957b4f3c73aea9be84f42739deff02a5490c113805ebd66ff7269ce501d1482b2c01e112c6f489bfb4cf2611dc8312e96825e5daf891dd0bc8b49&ascene=0&uin=NzMzNTE1NDQ0&devicetype=iMac+MacBookPro11%2C1+OSX+OSX+10.12.3+build(16D32)&version=12020710&nettype=WIFI&fontScale=100&pass_ticket=RFTm8r1gw0prLgztk4axX1OAPhK427GzoPwxub8juSZalcnaxpi%2B7BOmwlvaBz3O
 */
+/*
+冒泡排序,简单选择排序,堆排序,直接插入排序,希尔排序的空间复杂度为O(1),因为需要一个临时变量来交换元素位置,(另外遍历序列时自然少不了用一个变量来做索引)
+
+快速排序空间复杂度为logn(因为递归调用了) ,归并排序空间复杂是O(n),需要一个大小为n的临时数组.
+
+基数排序的空间复杂是O(n),桶排序的空间复杂度不确定
+*/
+
 #include <iostream>
 using namespace std;
 
@@ -12,7 +20,7 @@ void swap(int &a, int &b){
   b = temp;
 }
 
-//希尔排序
+//希尔排序 平均时间复杂度o(n^1.3) 空间复杂度o(1)
 void shellSort(int a[], int n){
   for(int step = n/2; step > 0; step /= 2){
     for(int i = 0; i < step; i ++){
@@ -109,7 +117,7 @@ void adjustHeap(int *arrs, int p, int len){
     int child = 2*p + 1;   //左孩子，下标从0开始
     while(child < len){     //直到没有孩子节点
         if(child+1<len && arrs[child]<arrs[child+1]){
-            child++;    //较大孩子的下标（左孩子或者右孩子）
+            child++;    //较大孩子的下标（此时为右孩子）
         }
         if(curParent<arrs[child]){
             arrs[p]=arrs[child];

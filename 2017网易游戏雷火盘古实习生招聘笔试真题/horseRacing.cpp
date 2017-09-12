@@ -20,9 +20,18 @@
 1.5000
 */
 #include<iostream>
-
+#include <iomanip>
 using namespace std;
 
-class Solution{
-
-};
+int main(){
+  int N;
+  while(cin >> N){
+    double sum = 0;
+    for(int i = 1; i <=N; i ++){
+      sum += 1.0/i;
+    }
+    cout.setf(ios::fixed);
+    cout << fixed << setprecision(4) << sum << endl;
+  }
+  return 0;
+}
